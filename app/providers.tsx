@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, type ReactNode } from 'react';
 import { AuthProvider } from '@authtara/sdk/react';
 import { getAuthClient } from '@/lib/auth/client';
 
@@ -11,7 +11,7 @@ import { getAuthClient } from '@/lib/auth/client';
  * Ini terjadi karena AuthProvider mencoba check existing session sebelum user login.
  * Error ini tidak mengganggu aplikasi dan sudah di-handle dengan graceful oleh SDK.
  */
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({ children }: { children: ReactNode }) {
   // Initialize authClient dalam useMemo untuk ensure single instance
   const authClient = useMemo(() => getAuthClient(), []);
 
