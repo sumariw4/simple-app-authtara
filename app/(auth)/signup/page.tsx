@@ -42,19 +42,14 @@ export default function SignUpPage() {
       <div className="w-full max-w-md space-y-8 rounded-lg bg-white p-8 shadow-md">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-gray-900">Sign Up</h1>
-          <p className="mt-2 text-sm text-gray-600">
-            Create a new account to get started
-          </p>
+          <p className="mt-2 text-sm text-gray-600">Create a new account to get started</p>
         </div>
 
         <SignUpForm onSuccess={handleSuccess} />
 
         <div className="text-center text-sm">
           <span className="text-gray-600">Already have an account? </span>
-          <a
-            href="/login"
-            className="font-medium text-blue-600 hover:text-blue-500"
-          >
+          <a href="/login" className="font-medium text-blue-600 hover:text-blue-500">
             Sign in
           </a>
         </div>
@@ -62,4 +57,3 @@ export default function SignUpPage() {
     </div>
   );
 }
-

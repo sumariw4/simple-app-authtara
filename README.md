@@ -22,16 +22,19 @@ Aplikasi Next.js 16+ sederhana dengan autentikasi menggunakan @authtara/sdk yang
 ### Installation
 
 1. Install dependencies:
+
 ```bash
 bun install
 ```
 
 2. Copy environment variables template:
+
 ```bash
 cp .env.local.example .env.local
 ```
 
 3. Edit `.env.local` dan set:
+
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:3000
 NEXT_PUBLIC_CLIENT_ID=app_your_client_id_here
@@ -40,6 +43,7 @@ NEXT_PUBLIC_CLIENT_ID=app_your_client_id_here
 ### Development
 
 Run development server:
+
 ```bash
 bun run dev
 ```
@@ -49,11 +53,13 @@ Aplikasi akan berjalan di `http://localhost:3002`
 ### Build
 
 Build untuk production:
+
 ```bash
 bun run build
 ```
 
 Run production server:
+
 ```bash
 bun run start
 ```
@@ -100,7 +106,21 @@ simple-app-authtara/
 
 ## Notes
 
-- Aplikasi menggunakan `@authtara/sdk` dari local package (`file:../saas-authtara-sdk`)
+- Aplikasi menggunakan `@authtara/sdk` dari npm registry (`^1.0.1`)
 - Backend API endpoint: `/widget/api/*`
 - Client ID harus valid dan terdaftar di backend
 
+## Troubleshooting
+
+### Error 401 (Unauthorized) di Console
+
+Jika Anda melihat error `401 (Unauthorized)` di browser console saat aplikasi pertama kali load, ini adalah **expected behavior** dan tidak mengganggu aplikasi.
+
+**Penjelasan:**
+
+- AuthProvider mencoba check existing session saat initial load
+- Jika user belum login, backend mengembalikan 401 (yang benar)
+- SDK dan AuthProvider sudah handle error ini dengan graceful (silent fail)
+- Error di console adalah browser logging failed HTTP request, tapi aplikasi tetap berfungsi normal
+
+**Solusi:** Tidak ada yang perlu dilakukan - aplikasi sudah bekerja dengan benar. Setelah user login, error ini tidak akan muncul lagi.

@@ -7,17 +7,18 @@ import { AuthClient } from '@authtara/sdk';
 
 // Get environment variables
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:3000';
-const CLIENT_ID = process.env.NEXT_PUBLIC_CLIENT_ID;
+const CLIENT_ID_ENV = process.env.NEXT_PUBLIC_CLIENT_ID;
 
-if (!CLIENT_ID) {
-  throw new Error(
-    'NEXT_PUBLIC_CLIENT_ID is required. Please set it in your .env.local file.',
-  );
+if (!CLIENT_ID_ENV) {
+  throw new Error('NEXT_PUBLIC_CLIENT_ID is required. Please set it in your .env.local file.');
 }
 
-if (!CLIENT_ID.startsWith('app_')) {
+if (!CLIENT_ID_ENV.startsWith('app_')) {
   throw new Error('NEXT_PUBLIC_CLIENT_ID must start with "app_"');
 }
+
+// After validation, CLIENT_ID is guaranteed to be a string
+const CLIENT_ID: string = CLIENT_ID_ENV;
 
 // Construct API URL dengan path /widget/api
 const WIDGET_API_URL = `${API_URL}/widget/api`;
@@ -49,4 +50,3 @@ export function createAuthClient(): AuthClient {
     apiUrl: WIDGET_API_URL,
   });
 }
-

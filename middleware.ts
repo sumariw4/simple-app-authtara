@@ -3,7 +3,7 @@ import type { NextRequest } from 'next/server';
 
 /**
  * Middleware untuk route protection
- * 
+ *
  * Logic:
  * - Public routes: /login, /signup (bisa diakses tanpa auth)
  * - Protected routes: /dashboard dan semua sub-routes (require auth)
@@ -48,4 +48,3 @@ export const config = {
     '/((?!api|_next/static|_next/image|favicon.ico).*)',
   ],
 };
-
