@@ -13,7 +13,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@authtara/sdk": "^1.0.1",
+    "@authtara/sdk": "workspace:*",
     "next": "16.0.0",
     "react": "19.2.0",
     "react-dom": "19.2.0"
