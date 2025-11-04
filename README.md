@@ -104,9 +104,64 @@ simple-app-authtara/
 3. Sign up atau Sign in untuk mengakses dashboard
 4. Dashboard menampilkan informasi user dan tombol sign out
 
+## Local Development dengan SDK
+
+Aplikasi ini menggunakan `@authtara/sdk` dari workspace lokal (tidak perlu publish ke npm). Setup menggunakan Bun workspaces untuk development yang lebih efisien.
+
+### Development Workflow
+
+1. **Build SDK pertama kali** (jika belum):
+   ```bash
+   # Dari root workspace
+   bun run build:sdk
+   
+   # Atau langsung dari authtara-sdk directory
+   cd authtara-sdk
+   bun run build
+   ```
+
+2. **Jalankan SDK watch mode** (terminal 1):
+   ```bash
+   # Dari root workspace
+   bun run dev:sdk
+   
+   # Atau langsung dari authtara-sdk directory
+   cd authtara-sdk
+   bun run dev:watch
+   ```
+   Watch mode akan auto-rebuild SDK saat ada perubahan di source code.
+
+3. **Jalankan aplikasi** (terminal 2):
+   ```bash
+   # Dari root workspace
+   bun run dev:app
+   
+   # Atau langsung dari simple-app-authtara directory
+   cd simple-app-authtara
+   bun run dev
+   ```
+
+### Menggunakan NPM Registry (Production)
+
+Untuk production atau jika ingin menggunakan versi dari npm registry, ubah dependency di `package.json`:
+
+```json
+{
+  "dependencies": {
+    "@authtara/sdk": "^1.0.1"
+  }
+}
+```
+
+Kemudian jalankan:
+```bash
+bun install
+```
+
 ## Notes
 
-- Aplikasi menggunakan `@authtara/sdk` dari npm registry (`^1.0.1`)
+- **Development**: Aplikasi menggunakan `@authtara/sdk` dari workspace lokal (`workspace:*`)
+- **Production**: Dapat menggunakan versi dari npm registry (`^1.0.1`)
 - Backend API endpoint: `/widget/api/*`
 - Client ID harus valid dan terdaftar di backend
 
