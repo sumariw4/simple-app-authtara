@@ -13,8 +13,8 @@ if (!CLIENT_ID_ENV) {
   throw new Error('NEXT_PUBLIC_CLIENT_ID is required. Please set it in your .env.local file.');
 }
 
-if (!CLIENT_ID_ENV.startsWith('app_')) {
-  throw new Error('NEXT_PUBLIC_CLIENT_ID must start with "app_"');
+if (!CLIENT_ID_ENV.startsWith('pk_')) {
+  throw new Error('NEXT_PUBLIC_CLIENT_ID must start with "pk_"');
 }
 
 // After validation, CLIENT_ID is guaranteed to be a string
