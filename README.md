@@ -17,7 +17,7 @@ Aplikasi Next.js 16+ sederhana dengan autentikasi menggunakan @authtara/sdk yang
 
 - Bun >= 1.0.0 (package manager)
 - Backend saas-backend harus running di `http://localhost:3000`
-- Application client ID yang valid (format: `app_xxx`)
+- Application client ID yang valid (format: `pk_xxx`)
 
 ### Installation
 
@@ -37,7 +37,7 @@ cp .env.local.example .env.local
 
 ```env
 NEXT_PUBLIC_API_URL=http://localhost:3000
-NEXT_PUBLIC_CLIENT_ID=app_your_client_id_here
+NEXT_PUBLIC_CLIENT_ID=pk_your_client_id_here
 ```
 
 ### Development
